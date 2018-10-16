@@ -9,77 +9,12 @@ import { tokenUrl, instanceLocator } from './config'
 
 import {Wit} from 'node-wit'
 
+import {token, DUMMY_MESSAGE, allJokes} from './variables'
 
-/*
-try {
-  // if running from repo
-  Wit = require('../').Wit;
-  interactive = require('../').interactive;
-} catch (e) {
-  Wit = require('node-wit').Wit;
-  interactive = require('node-wit').interactive;
-}*/
-/*
-import Chatkit from '@pusher/chatkit'
-*/
-
-
-/*
-
-const client = new Wit({accessToken: 'YLX3LE3OPB6SXF3LHDBPFAN5HZHDCDFS'});
-
-*/
-
-const token = 'YLX3LE3OPB6SXF3LHDBPFAN5HZHDCDFS';
 
 const ladypic = 'http://www.ahalsiyakhat.com/wp-content/uploads/2016/07/profile-unknown-female-2.jpeg.png';
 const manpic = 'https://image.freepik.com/vector-gratis/perfil-de-avatar-de-hombre-en-icono-redondo_24640-14044.jpg';
 const guypic = 'https://image.flaticon.com/icons/svg/74/74276.svg';
-
-const DUMMY_MESSAGE=[
-    {messageName: 'Ami',
-    messageContent: 'Hello Underworld!',
-    profilesrc: ladypic,
-    fromUser: false},
-    {messageName: 'Underworld',
-    messageContent:'Online',
-    profilesrc: manpic,
-    fromUser: false},
-    {messageName: 'Ami',
-    messageContent: 'Who lives in a pineapple under the sea?',
-    profilesrc: ladypic,
-    fromUser: false},
-    {messageName: 'Underworld',
-    messageContent: 'SpongeBob SquarePants!',
-    profilesrc: manpic,
-    fromUser: false},
-    {messageName: 'Louis',
-    messageContent: 'I hope this works!',
-    profilesrc:guypic,
-    fromUser: true},
-
-];
-
-
-
-const allJokes = {
-  math: [
-    'Why should you never talk to Pi? Because she’ll go on and on and on forever.',
-    'Why was the math lecture so long? The professor kept going off on a tangent.',
-    'Why is it sad that parallel lines have so much in common? Because they will never meet.'  
-  ],
-  tech: [
-    'Did you hear about the two antennas that got married? The ceremony was long and boring, but the reception was great!',
-    'Why do geeks mistake Halloween and Christmas? Because Oct 31 === Dec 25.',
-  ],
-  puns: ['I asked my French friend if she likes to play video games. She said, “Wii."',
-        'What kind of cats like to go bowling? Alley cats.'
-  ],
-  bye: ['See you soon!'],
-  default: [
-    'Why was the Math book sad? Because it had so many problems.',
-  ],
-};
 
 
 function firstEntityValue (entities, entity) {
@@ -88,13 +23,13 @@ function firstEntityValue (entities, entity) {
     entities.entities[entity].length > 0 &&
     entities.entities[entity][0].value
   ;
-  if (entity === 'getJoke'){
+ /* if (entity === 'getJoke'){
       alert(JSON.stringify(entities))
       alert(entities.entities)
       alert(val)
 
   }
-    
+    */
   if (!val) {
     return null;
   }
@@ -143,7 +78,7 @@ class App extends React.Component {
         e.preventDefault()
         let newMessage;
         if (this.state.currentInput !== ''){
-            if (this.state.currentInput === 'Hello world'){
+            /*if (this.state.currentInput === 'Hello world'){
                 newMessage = {messageName: this.state.userID,
                                  messageContent: this.state.currentInput,
                                  profilesrc:guypic,
@@ -157,7 +92,7 @@ class App extends React.Component {
                     messageList: [...this.state.messageList, newMessage, newMessage2],
                     currentInput: '',
                 })
-            } else{
+            } else{*/
                 newMessage = {messageName: this.state.userID,
                                  messageContent: this.state.currentInput,
                                  profilesrc:guypic,
@@ -167,8 +102,8 @@ class App extends React.Component {
                     messageList: [...this.state.messageList, newMessage],
                     currentInput: '',
                 })
-            }
-        }
+            
+        
         this.setState({
             submitPacket:newMessage,
         })
@@ -177,7 +112,7 @@ class App extends React.Component {
             this.setState({response: data,
             hasUpdate: false,})
         })        
-       
+        }
     }
     
     /*receiveMessage(){

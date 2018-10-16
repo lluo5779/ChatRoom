@@ -88,6 +88,10 @@ code {
     color: white;
 }
 
+.messageFromOther .messageContainer{
+    animation-delay: 100s !important;
+}
+
 .messageFromOther .messageContent {
     background-color: blueviolet;
     border: 2px solid black;
