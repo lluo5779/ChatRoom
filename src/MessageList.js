@@ -6,10 +6,17 @@ import Message from './Message'
 var appendClass;
 
 class MessageList extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+            client:this.props.client,
+        }
+    }
     
     componentWillUpdate(){
         const node = ReactDOM.findDOMNode(this)
         this.shouldScrollDown = (node.scrollTop + node.clientHeight + 300) >= node.scrollHeight;
+        
     }
     
     componentDidUpdate(){
@@ -17,6 +24,8 @@ class MessageList extends React.Component{
             const node = ReactDOM.findDOMNode(this)
             node.scrollTop = node.scrollHeight
         }
+        
+        
         
         
     }
